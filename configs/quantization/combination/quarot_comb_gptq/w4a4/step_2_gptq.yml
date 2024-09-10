@@ -3,21 +3,21 @@ base:
 model:
     type: Llama
     # Load Quarot-transformed model
-    path: /path/to/save_quarot_trans_for_gptq/transformed_model
+    path: /content/transformed_model
     torch_dtype: auto
 calib:
     name: wikitext2
-    download: False
+    download: True
     path: calib data path
     n_samples: 128
     bs: 1
-    seq_len: 2048
+    seq_len: 1024
     preproc: wikitext2_gptq
     seed: *seed
 eval:
     eval_pos: [fake_quant]
     name: wikitext2
-    download: False
+    download: True
     path: eval data path
     seq_len: 2048
     # For 7B / 13B model eval, bs can be set to "1", and inference_per_block can be set to "False".
@@ -51,4 +51,4 @@ quant:
 save:
     save_trans: False
     save_fake: False
-    save_path: /path/to/save/
+    save_path: /content/
